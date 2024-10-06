@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon" />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media-query.css" />
+    <title>LinkZip</title>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <a href="index.html">LinkZip</a>
+      </h1>
+    </header>
+    <main>
+      <h2>URL Shortener</h2>
+      <section id="main-section">
+        <form id="form" action="#" method="post" autocomplete="on">
+          <div id="url-field">
+            <label for="url"></label>
+            <input
+              autocomplete="url"
+              required
+              placeholder="Type a URL"
+              type="text"
+              name="url"
+              id="url"
+            />
+          </div>
+          <div id="custom-field">
+            <label for="custom"></label>
+            <input
+              placeholder="Custom endpoint"
+              autocomplete="url"
+              type="text"
+              name="custom"
+              id="custom"
+            />
+          </div>
+          <input id="submit" type="submit" value="Shorten" />
+        </form>
+      </section>
+      <section id="response"><li></li>
+        <p>Shortened URL</p>
+        <div onclick="copyText()" id="copy">Copy URL</div>
+      </section>
+    </main>
+    <footer>
+      <p>
+        Developed by
+        <a
+          target="_blank"
+          rel="external"
+          href="https://www.linkedin.com/in/gabrieudev/"
+          >gabrieudev</a
+        >
+      </p>
+      <p>
+        <a
+          target="_blank"
+          rel="external"
+          href="https://github.com/gabrieudev/url-shortener"
+          >Back-End repository</a
+        >
+      </p>
+      <p><a target="_blank" rel="external" href="#">Front-End repository</a></p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="js/global.js"></script>
+  </body>
+</html>
