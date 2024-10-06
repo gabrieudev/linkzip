@@ -1,4 +1,4 @@
-const baseUrl = "https://linkzip-f511.onrender.com";
+let apiUrl = "https://linkzip-f511.onrender.com";
 
 document.getElementById("form").addEventListener("submit", function (event) {
   event.preventDefault();
@@ -6,14 +6,10 @@ document.getElementById("form").addEventListener("submit", function (event) {
   const url = document.getElementById("url").value;
   const custom = document.getElementById("custom").value;
 
-  if (custom.trim() === "") {
-    shorten(url);
-  } else {
-    shortenCustom(url, custom);
-  }
+  shorten(url, custom);
 });
 
-function shorten(url) {
+async function shorten(url, custom) {
   const mainDiv = document.getElementById("main-section");
   const responseDiv = document.getElementById("response");
   const output = document.querySelector("section#response p");
@@ -23,49 +19,29 @@ function shorten(url) {
   mainDiv.style.borderRadius = "20px 20px 0px 0px";
   responseDiv.style.display = "block";
 
-  axios
-    .post(baseUrl + "/shorten", {
+  let body = {};
+
+  if (custom.trim() === "") {
+    apiUrl += "/shorten";
+    body = {
       fullUrl: url,
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        output.innerText = response.data.shortenedUrl;
-      } else {
-        output.innerText = response.data.detail;
-      }
-      copyDiv.style.display = "block";
-    })
-    .catch((error) => {
-      output.innerText = error;
-    });
-}
-
-function shortenCustom(url, custom) {
-  const mainDiv = document.getElementById("main-section");
-  const responseDiv = document.getElementById("response");
-  const output = document.querySelector("section#response p");
-  const copyDiv = document.getElementById("copy");
-
-  output.innerText = "Shortening URL, wait a second...";
-  mainDiv.style.borderRadius = "20px 20px 0px 0px";
-  responseDiv.style.display = "block";
-
-  axios
-    .post(baseUrl + "/shorten/custom", {
+    };
+  } else {
+    apiUrl += "/shorten/custom";
+    body = {
       fullUrl: url,
       token: custom,
-    })
-    .then((response) => {
-      if (response.status === 200) {
-        output.innerText = response.data.shortenedUrl;
-      } else {
-        output.innerText = response.data.detail;
-      }
-      copyDiv.style.display = "block";
-    })
-    .catch((error) => {
-      output.innerText = error;
-    });
+    };
+  }
+
+  try {
+    const response = await axios.post(apiUrl, body);
+    copyDiv.style.display = "block";
+    output.innerText = response.data.shortenedUrl;
+  } catch (error) {
+    output.innerText =
+      error.response?.data?.detail || "Error while shortening url";
+  }
 }
 
 function copyText() {
