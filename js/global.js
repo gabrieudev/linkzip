@@ -1,5 +1,3 @@
-let apiUrl = "https://linkzip-f511.onrender.com";
-
 document.getElementById("form").addEventListener("submit", function (event) {
   event.preventDefault();
 
@@ -10,6 +8,8 @@ document.getElementById("form").addEventListener("submit", function (event) {
 });
 
 async function shorten(url, custom) {
+  let apiUrl = "https://linkzip-f511.onrender.com";
+
   const mainDiv = document.getElementById("main-section");
   const responseDiv = document.getElementById("response");
   const output = document.querySelector("section#response p");
