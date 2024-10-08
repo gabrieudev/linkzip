@@ -15,7 +15,7 @@ async function shorten(url, custom) {
   const output = document.querySelector("section#response p");
   const copyDiv = document.getElementById("copy");
 
-  output.innerText = "Shortening URL, wait a second...";
+  output.innerText = "Shortening URL, wait a minute...";
   mainDiv.style.borderRadius = "20px 20px 0px 0px";
   responseDiv.style.display = "block";
 

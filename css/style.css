@@ -80,7 +80,7 @@ main section input[type="text"]::placeholder {
 
 main section input[type="submit"] {
   padding: 8px;
-  margin-top: 10px;
+  margin-top: 20px;
   border-radius: 5px;
   font-weight: bold;
   background-color: rgba(255, 255, 255, 0.355);
@@ -102,12 +102,13 @@ main section#response {
 
 main section#response p {
   font-family: Verdana, sans-serif;
-  font-size: 0.8em;
   color: white;
   background-color: var(--primary-color);
   margin: auto;
   border-radius: 10px;
-  padding: 3px;
+  padding: 5px;
+  width: 250px;
+  font-size: 0.9em;
 }
 
 main section#response div#copy {
@@ -123,6 +124,24 @@ main section#response div#copy {
 
 main section#response div#copy:hover {
   background-color: var(--white);
+}
+
+main a {
+  display: block;
+  color: black;
+  font-weight: bold;
+  width: 200px;
+  margin: 15px auto auto auto;
+  text-decoration: none;
+  border: 2px solid;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+main a:hover {
+  background-color: var(--white);
+  border-radius: 6px;
+  border-radius: 20px;
 }
 
 footer {
